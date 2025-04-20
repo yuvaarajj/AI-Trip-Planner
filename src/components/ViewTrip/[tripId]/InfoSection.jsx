@@ -1,13 +1,9 @@
 import React from 'react'
 
 const InfoSection = (tripInfo) => {
-  // console.log(tripInfo)
-  // console.log('checking')
-  // console.log(tripInfo?.trip?.userSelctions?.location?.label)
-  // console.log('checking')
   return (
     <div>
-      <img src="/travel_cover_pic.jpg" alt="" />
+      
       <div className='my-5 flex flex-col gap-2'>
         <h2 className='font-bold text-2xl'>{tripInfo?.trip?.userSelctions?.location?.label}</h2>
         <div className='flex flex-row gap-3'>

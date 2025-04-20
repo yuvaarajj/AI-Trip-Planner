@@ -1,3 +1,4 @@
+import { DotLottieReact } from '@lottiefiles/dotlottie-react'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
@@ -12,7 +13,12 @@ function Hotels({trip}) {
     <Link to={'https://www.google.com/maps/search/?api=1&query='+ hotel?.name + ',' + hotel?.address} target='_blank'>
     <div className='hover:scale-110 transition-all cursor-pointer'>
 
-    <img src="/travel_cover_pic.jpg" alt="" />
+    <DotLottieReact
+      src="https://lottie.host/f8b2f6ad-8860-4195-a79b-63c58d06f3f4/YNUdw3gCQV.lottie"
+      loop
+      autoplay
+    />
+    
     <div>
 {/* <img src={hotel.imageURL}  alt="" /> */}
       <h2 className='font-medium'>{hotel.name}</h2>

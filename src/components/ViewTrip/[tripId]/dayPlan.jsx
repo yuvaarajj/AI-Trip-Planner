@@ -1,3 +1,4 @@
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { Button } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
@@ -17,28 +18,39 @@ function DayPlan(trip) {
               Best Time To Visit {item.bestTimeToVisit}
             </h2>
             {item?.plan.map((place, index) => (
-            <Link to={'https://www.google.com/maps/search/?api=1&query='+ place.placeName} target='_blank'>
-              <div className="border rounded-2xl p-2 m-2 flex flex-row justify-center items-center gap-2 hover:scale-110 transition-all shadow-emerald-200 cursor-pointer">
-                <div className="w-100">
-                  <h2 className="font-bold text-2xl text-blue-400">
-                    {place.placeName}
-                  </h2>
-                  <img
+              <Link
+                to={
+                  "https://www.google.com/maps/search/?api=1&query=" +
+                  place.placeName
+                }
+                target="_blank"
+              >
+                <div className="border rounded-2xl p-2 m-2 flex flex-row justify-center items-center gap-2 hover:scale-110 transition-all shadow-emerald-200 cursor-pointer">
+                  <div className="w-100">
+                    <h2 className="font-bold text-2xl text-blue-400">
+                      {place.placeName}
+                    </h2>
+                    {/* <img
                     className="h-45 w-75"
                     src="/travel_cover_pic.jpg"
                     alt=""
+                    /> */}
+                    <DotLottieReact
+                      src="https://lottie.host/01bf4a98-1c39-4ac0-8d1e-889d4e735577/uY9JgEnphc.lottie"
+                      loop
+                      autoplay
                     />
+                    
+                  </div>
+                  <div className="w-135">
+                    <p className="font-medium text-xl text-gray-600">
+                      {place.details}
+                    </p>
+                    <h2>⌚{place.timeTaken}</h2>
+                    <Button variant="contained">📌</Button>
+                  </div>
                 </div>
-                <div className="w-135">
-                  <p className="font-medium text-xl text-gray-600">
-                    {place.details}
-        
-                  </p>
-                  <h2>⌚{place.timeTaken}</h2>
-                  <Button variant="contained">📌</Button>
-                </div>
-              </div>
-            </Link>
+              </Link>
             ))}
           </div>
         ))}

@@ -100,17 +100,19 @@ setloading(false)
   };
 
   return (
-    <div className="sm:px-10 md:px-32 lg:px-56 xl:px-10 px-5 p-10">
+    <div className="sm:px-10 md:px-32 lg:px-56 xl:px-10 px-5 p-10 bg-gradient-to-tl from-stone-100 via-transparent to-yellow-300">
+      
       <h2 className="font-bold text-2xl">Tell us your Travel Preference</h2>
       <p className="text-xl text-gray-500">
         Just provide some basic information and our trip planner will generate a
         customized trip based on your preference.
       </p>
-      <div className="p-10">
+      <div className="p-10 m-3">
         <h2 className="text-xl font-medium">
           What is Destination of your choice?
         </h2>
         <GooglePlacesAutocomplete
+        
           apiKey="AIzaSyBQKg8ya9jEqpKgfr3iFA4aokBT8Kh5y-A"
           selectProps={{
             place,
@@ -121,9 +123,9 @@ setloading(false)
           }}
         />
       </div>
-      <div>
+      <div className="m-3">
         <h2 className="font-bold text-2xl">How many days are you planning?</h2>
-        <TextField
+        <TextField className="hover:scale-110 transition-all shadow-amber-700"
           id="outlined-basic"
           variant="outlined"
           type="number"
@@ -133,13 +135,13 @@ setloading(false)
       </div>
       <div>
         <h2 className="font-bold text-2xl">What is your Budget?</h2>
-        <div className="flex flex-row justify-around">
+        <div className="flex flex-row justify-around m-3">
           {SelectBudgetOptions.map((each, ind) => (
             <div
               key={ind}
-              className={`hover:shadow-2xl cursor-pointer border-gray-500 ${
+              className={`hover:shadow-2xl cursor-pointer p-4 border-r-2 hover:scale-110 transition-all border-gray-500 ${
                 formData?.budget == each.title &&
-                "border-2 shadow-lg border-black"
+                "shadow-lg bg-gradient-to-tl from-yellow-300 via-transparent to-stone-100"
               }`}
               onClick={() => handleInputChange("budget", each.title)}
             >
@@ -151,13 +153,13 @@ setloading(false)
         </div>
         <div>
           <h2 className="font-bold text-2xl">How do you planning to travel?</h2>
-          <div className="flex flex-row justify-around">
+          <div className="flex flex-row justify-around m-3">
             {SelectTravelesList.map((each, ind) => (
               <div
                 key={ind}
-                className={`hover:shadow-2xl cursor-pointer border-gray-500 ${
+                className={`hover:shadow-2xl hover:scale-110 border-r-2 p-4 cursor-pointer  ${
                   formData?.traveler == each.people &&
-                  "border-2 shadow-lg border-black"
+                  "shadow-lg bg-gradient-to-tl from-yellow-300 via-transparent to-stone-100"
                 }`}
                 onClick={() => handleInputChange("traveler", each.people)}
               >
@@ -169,7 +171,7 @@ setloading(false)
           </div>
         </div>
         <Button onClick={generateTrip}>
-          {loading ? <AiOutlineLoading3Quarters />
+          {loading ? <AiOutlineLoading3Quarters className="animate-spin" />
  :
 'Generate Trip'}
           </Button>
