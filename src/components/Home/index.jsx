@@ -28,7 +28,7 @@ function Home() {
           </span>
           Personalized Itineraries at your fingertips.
         </h1>
-        <p>
+        <p className="text-xl text-center text-rose-400 font-bold">
           Your personal trip planner and travel editor, creating cutom trips
           tailored to your intrest and budget.
         </p>
