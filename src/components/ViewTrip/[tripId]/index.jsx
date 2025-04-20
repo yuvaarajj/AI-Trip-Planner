@@ -6,6 +6,7 @@ import InfoSection from './InfoSection'
 import Hotels from './Hotels'
 import DayPlan from './dayPlan'
 import Hyperspeed from './Hyperspeed';
+import Footer from './Footer'
 
 const Viewtrip = () => {
     const {tripId} = useParams()
@@ -41,6 +42,7 @@ const getTripData = async () => {
 <DayPlan trip={trip}/>
 
 {/* Footer */}
+<Footer/>
 
 <Hyperspeed
   effectOptions={{
