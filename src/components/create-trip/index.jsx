@@ -114,7 +114,7 @@ const CreateTrip = () => {
         customized trip based on your preference.
       </p>
       <div className="p-10 m-3">
-        <h2>From (current location)</h2>
+        {/* <h2>From (current location)</h2>
         <GooglePlacesAutocomplete
           apiKey="AIzaSyBQKg8ya9jEqpKgfr3iFA4aokBT8Kh5y-A"
           selectProps={{
@@ -124,7 +124,7 @@ const CreateTrip = () => {
               handleInputChange("from", e);
             },
           }}
-        />
+        /> */}
 
         <h2 className="text-xl font-medium">
           What is Destination of your choice?

@@ -40,7 +40,7 @@ const getTripData = async () => {
         
 <div>
 
-<From trip={trip}/>
+{/* <From trip={trip}/> */}
 
 <InfoSection trip={trip}/>
 
