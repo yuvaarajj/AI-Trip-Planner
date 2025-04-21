@@ -5,7 +5,7 @@ import { Ai_Prompt, SelectBudgetOptions, SelectTravelesList } from "./options";
 import { chatSession } from "./aimodal";
 import * as React from "react";
 import { FaGoogle } from "react-icons/fa";
-import { doc, setDoc } from "firebase/firestore"; 
+import { doc, setDoc } from "firebase/firestore";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 import Dialog from "@mui/material/Dialog";
@@ -20,8 +20,8 @@ const CreateTrip = () => {
   const [place, setplace] = useState("");
   const [formData, setformData] = useState([]);
   const [openDialog, setOpenDialog] = useState(false);
-  const [loading, setloading] = useState(false)
-  const navigation = useNavigate()
+  const [loading, setloading] = useState(false);
+  const navigation = useNavigate();
   const handleInputChange = (name, value) => {
     setformData({
       ...formData,
@@ -34,41 +34,46 @@ const CreateTrip = () => {
   }, [formData]);
 
   const login = useGoogleLogin({
-    onSuccess : (codeRes) => getUserProfile(codeRes),
-    onError: (err) => console.log(err)
-   })
+    onSuccess: (codeRes) => getUserProfile(codeRes),
+    onError: (err) => console.log(err),
+  });
 
-const getUserProfile = (tokenInfo) => {
-  axios.get(`https://www.googleapis.com/oauth2/v1/userinfo?access_tokens=${tokenInfo?.access_token}`,{
-    headers:{
-      Authorization: `Bearer ${tokenInfo?.access_token}`,
-      Accept: 'application/json'
-    }
-  }).then((res)=>{console.log(res)
-    localStorage.setItem('user', JSON.stringify(res.data))
-    setOpenDialog(false)
-    generateTrip()
-  })
-  
-}
+  const getUserProfile = (tokenInfo) => {
+    axios
+      .get(
+        `https://www.googleapis.com/oauth2/v1/userinfo?access_tokens=${tokenInfo?.access_token}`,
+        {
+          headers: {
+            Authorization: `Bearer ${tokenInfo?.access_token}`,
+            Accept: "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+        localStorage.setItem("user", JSON.stringify(res.data));
+        setOpenDialog(false);
+        generateTrip();
+      });
+  };
 
-const savePlan = async (tripdata) => {
-  setloading(true)
-// Add a new document in collection "cities"
-const user = JSON.parse(localStorage.getItem('user'))
-const docId = Date.now().toString()
-await setDoc(doc(db, "AiTrip", docId), {
-  userSelctions: formData,
-  tripDetails: JSON.parse(tripdata),
-  userEmail: user?.email,
-  id: docId
-});
-setloading(false)
-  navigation('/view-trip/'+docId)
-}
+  const savePlan = async (tripdata) => {
+    setloading(true);
+    // Add a new document in collection "cities"
+    const user = JSON.parse(localStorage.getItem("user"));
+    const docId = Date.now().toString();
+    await setDoc(doc(db, "AiTrip", docId), {
+      userSelctions: formData,
+      tripDetails: JSON.parse(tripdata),
+      userEmail: user?.email,
+      id: docId,
+    });
+    setloading(false);
+    navigation("/view-trip/" + docId);
+  };
 
   const generateTrip = async () => {
-    setloading(true)
+    setloading(true);
     const user = localStorage.getItem("user");
 
     // setOpenDialog(true);
@@ -93,17 +98,16 @@ setloading(false)
       .replace("{budget}", formData?.budget)
       .replace("{totalDays}", formData?.noOfDays)
       .replace("{from}", formData?.from)
-      .replace("{from}", formData?.from)
+      .replace("{from}", formData?.from);
 
     const result = await chatSession.sendMessage(final_Prompt);
-setloading(false)
+    setloading(false);
     console.log(result?.response?.text());
-    savePlan(result?.response?.text())
+    savePlan(result?.response?.text());
   };
 
   return (
     <div className="sm:px-10 md:px-32 lg:px-56 xl:px-10 px-5 p-10 bg-gradient-to-tl from-stone-100 via-transparent to-yellow-300">
-      
       <h2 className="font-bold text-2xl">Tell us your Travel Preference</h2>
       <p className="text-xl text-gray-500">
         Just provide some basic information and our trip planner will generate a
@@ -112,7 +116,6 @@ setloading(false)
       <div className="p-10 m-3">
         <h2>From (current location)</h2>
         <GooglePlacesAutocomplete
-        
           apiKey="AIzaSyBQKg8ya9jEqpKgfr3iFA4aokBT8Kh5y-A"
           selectProps={{
             place,
@@ -127,7 +130,6 @@ setloading(false)
           What is Destination of your choice?
         </h2>
         <GooglePlacesAutocomplete
-        
           apiKey="AIzaSyBQKg8ya9jEqpKgfr3iFA4aokBT8Kh5y-A"
           selectProps={{
             place,
@@ -140,7 +142,8 @@ setloading(false)
       </div>
       <div className="m-3">
         <h2 className="font-bold text-2xl">How many days are you planning?</h2>
-        <TextField className="hover:scale-110 transition-all shadow-amber-700"
+        <TextField
+          className="hover:scale-110 transition-all shadow-amber-700"
           id="outlined-basic"
           variant="outlined"
           type="number"
@@ -186,21 +189,32 @@ setloading(false)
           </div>
         </div>
         <Button onClick={generateTrip}>
-          {loading ? <AiOutlineLoading3Quarters className="animate-spin" />
- :
-'Generate Trip'}
-          </Button>
+          {loading ? (
+            <AiOutlineLoading3Quarters className="animate-spin" />
+          ) : (
+            "Generate Trip"
+          )}
+        </Button>
       </div>
 
       <Dialog open={openDialog}>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            <img src="logo.svg" alt="" />
+          <h1 className='text-5xl md:text-7xl font-extrabold text-transparent bg-clip-text 
+bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 
+hover:from-yellow-400 hover:via-red-500 hover:to-pink-500 
+transition-all duration-700 ease-in-out cursor-pointer'>AI Trip Planner (DEMO)</h1>
             <h2>Sign in with Google</h2>
             <p>Sign in with google authentication securely</p>
-            
-            <Button variant="outlined" onClick={login} className="w-full m-5 gap-4"><FaGoogle />
-            Sign In With Google</Button>
+
+            <Button
+              variant="outlined"
+              onClick={login}
+              className="w-full m-5 gap-4"
+            >
+              <FaGoogle />
+              Sign In With Google
+            </Button>
           </DialogContentText>
         </DialogContent>
       </Dialog>
