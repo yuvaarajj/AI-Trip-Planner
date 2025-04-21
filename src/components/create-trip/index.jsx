@@ -91,7 +91,9 @@ setloading(false)
       .replace("{totalDays}", formData?.noOfDays)
       .replace("{traveller}", formData?.traveler)
       .replace("{budget}", formData?.budget)
-      .replace("{totalDays}", formData?.noOfDays);
+      .replace("{totalDays}", formData?.noOfDays)
+      .replace("{from}", formData?.from)
+      .replace("{from}", formData?.from)
 
     const result = await chatSession.sendMessage(final_Prompt);
 setloading(false)
@@ -108,6 +110,19 @@ setloading(false)
         customized trip based on your preference.
       </p>
       <div className="p-10 m-3">
+        <h2>From (current location)</h2>
+        <GooglePlacesAutocomplete
+        
+          apiKey="AIzaSyBQKg8ya9jEqpKgfr3iFA4aokBT8Kh5y-A"
+          selectProps={{
+            place,
+            onChange: (e) => {
+              setplace(e);
+              handleInputChange("from", e);
+            },
+          }}
+        />
+
         <h2 className="text-xl font-medium">
           What is Destination of your choice?
         </h2>

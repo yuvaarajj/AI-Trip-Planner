@@ -8,6 +8,7 @@ import DayPlan from './dayPlan'
 import Hyperspeed from './Hyperspeed';
 import Footer from './Footer'
 import { DotLottieReact } from '@lottiefiles/dotlottie-react'
+import From from './from'
 
 const Viewtrip = () => {
     const {tripId} = useParams()
@@ -38,6 +39,8 @@ const getTripData = async () => {
     />
         
 <div>
+
+<From trip={trip}/>
 
 <InfoSection trip={trip}/>
 
