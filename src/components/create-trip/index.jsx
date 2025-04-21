@@ -200,12 +200,12 @@ const CreateTrip = () => {
       <Dialog open={openDialog}>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-          <h1 className='text-5xl md:text-7xl font-extrabold text-transparent bg-clip-text 
+          <h1 className='text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text 
 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 
 hover:from-yellow-400 hover:via-red-500 hover:to-pink-500 
 transition-all duration-700 ease-in-out cursor-pointer'>AI Trip Planner (DEMO)</h1>
-            <h2>Sign in with Google</h2>
-            <p>Sign in with google authentication securely</p>
+            <h2 className="font-bold">Sign in with Google</h2>
+            <p className="text-gray-500">Sign in with google authentication securely</p>
 
             <Button
               variant="outlined"
