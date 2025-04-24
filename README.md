@@ -1,12 +1,31 @@
-# React + Vite
+# AI Trip Planner
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+AI Trip Planner is a personalized trip planning application that uses Artificial Intelligence to help users plan their next adventure. This app takes user preferences such as destination, travel budget, duration, and more, then generates a tailored trip plan using AI. It also provides easy integration with Google Places and allows users to explore hotels, transportation, and activities.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Personalized Trip Planning**: Generate custom trip itineraries based on user preferences such as location, budget, travel days, and number of travelers.
+- **Google Authentication**: Sign in securely with your Google account.
+- **Google Places Autocomplete**: Use the Google Places API to select locations easily.
+- **AI-Powered Itinerary Generation**: Get trip suggestions powered by AI based on the details you provide.
+- **Responsive Design**: Optimized for mobile, tablet, and desktop devices.
+- **Hotel and Activity Recommendations**: View hotel and activity suggestions to enhance your trip.
+- **Customizable Travel Preferences**: Set your travel preferences such as budget, days, and type of traveler.
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Frontend**:
+  - React.js
+  - Tailwind CSS
+  - Material-UI
+  - Lottie Animations
+  - React Router
+
+- **Backend**:
+  - Firebase (Firestore) for database storage
+  - Google Places API for location suggestions
+  - AI Model Integration (Custom model/API for trip planning)
+
+- **Authentication**:
+  - Google OAuth for authentication
+
